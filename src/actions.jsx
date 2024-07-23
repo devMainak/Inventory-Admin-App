@@ -42,4 +42,32 @@ export const removeItem = (item) => async (dispatch) => {
   } catch (error) {
     console.error("Error adding new item", error)
   }
+}
+
+// Action creator function to fetch inventory data
+export const fetchInventory = () => async (dispatch) => {
+  try {
+    const response = await fetch("https://inventory-storage-app-backend-student-neog.replit.app/storage-items")
+    
+    const data = await response.json()
+    if (data) {
+      dispatch({type: FETCH_INVENTORY_SUCCESS, payload: data})
+    }
+  } catch (error) {
+    console.error("Error fetching inventory", error)
+  }
+} 
+
+// Action creator function to fetch inventory data
+export const fetchRemovedItems = () => async (dispatch) => {
+  try {
+    const response = await fetch("https://inventory-storage-app-backend-student-neog.replit.app/dispatched-from-store")
+
+    const data = await response.json()
+    if (data) {
+      dispatch({type: FETCH_REMOVED_SUCCESS, payload: data})
+    }
+  } catch (error) {
+    console.error("Error fetching inventory", error)
+  }
 } 

@@ -6,7 +6,7 @@ const initialState = {
 }
 
 const inventoryReducer = (state = initialState, action) => {
-  switch (action) {
+  switch (action.type) {
     case ADD_NEW_ITEM:
       if (action.payload.entryType === "Add to Storage")
       {
